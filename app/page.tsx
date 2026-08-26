@@ -7,15 +7,22 @@ import PreviewPanel from "../components/PreviewPanel";
 import PromptPanel from "../components/PromptPanel";
 
 export default function Home() {
+  const [word, setWord] = useState("");
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
-  const [word, setWord] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const handleGenerate = () => {
-    console.log("Generate graffiti:", {
+    if (!word.trim()) {
+      return;
+    }
+
+    setIsGenerating(true);
+
+    console.log("Generating graffiti:", {
       word,
-      selectedStyle,
-      selectedColors,
+      style: selectedStyle,
+      colors: selectedColors,
     });
   };
 
@@ -33,13 +40,14 @@ export default function Home() {
           selectedColors={selectedColors}
           setSelectedColors={setSelectedColors}
           onGenerate={handleGenerate}
+          isGenerating={isGenerating}
         />
 
         <PreviewPanel
           className="col-span-9"
           word={word}
-          selectedStyle={selectedStyle}
           selectedColors={selectedColors}
+          selectedStyle={selectedStyle}
         />
       </main>
     </>

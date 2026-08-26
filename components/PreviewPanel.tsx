@@ -32,22 +32,27 @@ export default function PreviewPanel({
                 backgroundImage: gradient,
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
-                color: selectedColors.length > 0 ? "transparent" : "white",
+                color:
+                  selectedColors.length > 0 ? "transparent" : "white",
                 WebkitTextFillColor:
                   selectedColors.length > 0 ? "transparent" : "white",
+                WebkitTextStroke: "2px black",
               }}
             >
               {word}
             </h3>
 
             {selectedStyle && (
-              <p className="text-graff-text-muted mt-2">
+              <p className="text-graff-text-muted mt-3">
                 {selectedStyle}
               </p>
             )}
           </>
         ) : (
-          <p>🎨 Your graffiti will appear here. Enter a word and generate your design.</p>
+          <p>
+            🎨 Your graffiti will appear here. Enter a word and
+            generate your design.
+          </p>
         )}
       </div>
     </div>
