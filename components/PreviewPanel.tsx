@@ -12,7 +12,7 @@ export default function PreviewPanel({
   const gradient =
     selectedColors.length > 0
       ? `linear-gradient(90deg, ${selectedColors.join(", ")})`
-      : "transparent";
+      : "white";
 
   return (
     <div
@@ -32,10 +32,8 @@ export default function PreviewPanel({
                 backgroundImage: gradient,
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
-                color:
-                  selectedColors.length > 0 ? "transparent" : "white",
-                WebkitTextFillColor:
-                  selectedColors.length > 0 ? "transparent" : "white",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
                 WebkitTextStroke: "2px black",
               }}
             >
@@ -49,9 +47,8 @@ export default function PreviewPanel({
             )}
           </>
         ) : (
-          <p>
-            🎨 Your graffiti will appear here. Enter a word and
-            generate your design.
+          <p className="text-graff-text-muted">
+            Your graffiti will appear here.
           </p>
         )}
       </div>
